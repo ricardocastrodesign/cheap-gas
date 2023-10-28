@@ -1,14 +1,16 @@
 <template>
-  <ul v-for="station in gasStations" :key="station.id">
-    <li>{{ station.name }} - {{ station.price }}</li>
-  </ul>
+  <GasStationList :gasStations="gasStations" />
 </template>
 
 <script>
 import { getGasStations } from "@/api/apiService.js"; // Import the API service
+import GasStationList from '@/components/GasStationList.vue';
+
 
 export default {
-  components: {},
+  components: {
+    GasStationList
+  },
   data() {
     return {
       gasStations: [],
@@ -22,7 +24,7 @@ export default {
       const searchForm = {
         lat: 52.521,
         lng: 13.438,
-        rad: 15,
+        rad: 3,
         type: "diesel",
         sort: "dist",
       };
