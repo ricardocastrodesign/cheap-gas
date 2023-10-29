@@ -19,7 +19,7 @@ export async function getGasStations(searchParams) {
     });
 
     if (response.data.ok) {
-      return response.data.stations;
+        return response.data.stations.filter(station => station.isOpen === true);
     } else {
       throw new Error(response.data.message);
     }
