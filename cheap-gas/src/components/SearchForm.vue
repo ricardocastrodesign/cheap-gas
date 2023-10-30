@@ -23,7 +23,7 @@
         class="d-flex flex-wrap mb-6"
       >
         <v-btn class="flex-1-0" value="price">Price</v-btn>
-        <v-btn class="flex-1-0" value="distance">Distance</v-btn>
+        <v-btn class="flex-1-0" value="dist">Distance</v-btn>
       </v-btn-toggle>
 
       <v-btn type="submit" color="primary" block>Search</v-btn>
