@@ -39,7 +39,7 @@ props: ['defaultSearchForm', 'gasStationsBrands'],
       selectedBrand: this.defaultSearchForm.brand,
       selectedFuelType: this.defaultSearchForm.type,
       sortOption: this.defaultSearchForm.sort,
-      fuelTypes: ["e5", "e10", "diesel", "all"],
+      fuelTypes: ["e5", "e10", "diesel"],
     };
   },
   methods: {

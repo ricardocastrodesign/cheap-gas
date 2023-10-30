@@ -17,12 +17,12 @@
           </v-col>
 
           <v-col class="pl-0">
-            <p class="text-caption">{{ station.dist.toFixed(2) }} km</p>
+            <p class="text-caption">{{ station.dist}} km</p>
           </v-col>
 
           <v-col cols="3">
             <p class="font-weight-black text-right">
-              {{ station.price.toFixed(2) }} €
+              {{ station.price}} €
             </p>
           </v-col>
         </v-row>
