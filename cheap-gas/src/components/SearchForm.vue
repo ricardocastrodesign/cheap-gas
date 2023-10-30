@@ -11,6 +11,7 @@
       <v-select
         v-model="selectedFuelType"
         :items="fuelTypes"
+        class="text-capitalize"
         label="Select Fuel Type"
         outlined
       ></v-select>
@@ -25,30 +26,32 @@
         <v-btn class="flex-1-0" value="distance">Distance</v-btn>
       </v-btn-toggle>
 
-      <v-btn type="submit" color="primary">Search</v-btn>
+      <v-btn type="submit" color="primary" block>Search</v-btn>
     </v-form>
   </v-container>
 </template>
 
 <script>
 export default {
+props: ['defaultSearchForm'],
   data() {
     return {
-      selectedBrand: null,
-      selectedFuelType: null,
-      sortOption: "price",
+      selectedBrand: this.defaultSearchForm.brand,
+      selectedFuelType: this.defaultSearchForm.type,
+      sortOption: this.defaultSearchForm.sort,
       brands: ["Aral", "Shell", "BP", "Total"],
-      fuelTypes: ["E5", "E10", "Diesel", "All"],
+      fuelTypes: ["e5", "e10", "diesel", "all"],
     };
   },
   methods: {
     submitSearch() {
       const searchOptions = {
         brand: this.selectedBrand,
-        fuelType: this.selectedFuelType,
-        sortBy: this.sortOption,
+        type: this.selectedFuelType,
+        sort: this.sortOption,
       };
-      console.log("Search Options:", searchOptions);
+
+      this.$emit('submit-search', searchOptions);
     },
   },
 };

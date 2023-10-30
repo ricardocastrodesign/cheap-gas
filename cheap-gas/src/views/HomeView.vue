@@ -1,38 +1,59 @@
 <template>
+  <SearchForm
+    :gasStationsBrands="gasStationsBrands"
+    :defaultSearchForm="defaultSearchForm"
+    @submit-search="submitSearch"
+  />
   <GasStationList :gasStations="gasStations" />
 </template>
 
 <script>
-import { getGasStations } from "@/api/apiService.js"; // Import the API service
-import GasStationList from '@/components/GasStationList.vue';
-
+import { getGasStations, getGasStationsBrands } from "@/api/apiService.js";
+import SearchForm from "@/components/SearchForm.vue";
+import GasStationList from "@/components/GasStationList.vue";
 
 export default {
   components: {
-    GasStationList
+    SearchForm,
+    GasStationList,
   },
   data() {
     return {
       gasStations: [],
+      gasStationsBrands: [],
+      defaultSearchForm: {
+        lat: 52.521,
+        lng: 13.438,
+        rad: 30,
+        brand: "Aral",
+        type: "diesel",
+        sort: "price",
+      },
     };
   },
   mounted() {
-    this.getGasStations();
+    this.getGasStations(this.defaultSearchForm);
+    this.getGasStationsBrands();
   },
   methods: {
-    async getGasStations() {
-      const searchForm = {
-        lat: 52.521,
-        lng: 13.438,
-        rad: 3,
-        type: "diesel",
-        sort: "dist",
-      };
+    async getGasStations(searchForm) {
       try {
         this.gasStations = await getGasStations(searchForm);
       } catch (error) {
         console.error("Error fetching gas stations:", error);
       }
+    },
+    async getGasStationsBrands() {
+      try {
+        this.gasStationsBrands = await getGasStationsBrands();
+      } catch (error) {
+        console.error("Error fetching gas stations:", error);
+      }
+    },
+    submitSearch(searchForm) {
+      const mergedSearchForm = { ...this.defaultSearchForm, ...searchForm };
+
+      this.getGasStations(mergedSearchForm);
     },
   },
 };
