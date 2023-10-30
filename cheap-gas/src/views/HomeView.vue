@@ -32,8 +32,8 @@ export default {
     };
   },
   mounted() {
-    this.getGasStations(this.defaultSearchForm);
     this.getGasStationsBrands();
+    this.getGasStations(this.defaultSearchForm);
   },
   methods: {
     async getGasStations(searchForm) {

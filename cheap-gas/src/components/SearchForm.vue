@@ -3,7 +3,7 @@
     <v-form @submit.prevent="submitSearch">
       <v-select
         v-model="selectedBrand"
-        :items="brands"
+        :items="gasStationsBrands"
         label="Select Preferred Brand"
         outlined
       ></v-select>
@@ -33,13 +33,12 @@
 
 <script>
 export default {
-props: ['defaultSearchForm'],
+props: ['defaultSearchForm', 'gasStationsBrands'],
   data() {
     return {
       selectedBrand: this.defaultSearchForm.brand,
       selectedFuelType: this.defaultSearchForm.type,
       sortOption: this.defaultSearchForm.sort,
-      brands: ["Aral", "Shell", "BP", "Total"],
       fuelTypes: ["e5", "e10", "diesel", "all"],
     };
   },
