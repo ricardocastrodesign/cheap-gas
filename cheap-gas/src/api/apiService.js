@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'd28cef5b-8bd3-1d58-236f-1ed31dcf0697';
+const API_KEY = '3025572a-4a5e-216d-6141-7fd3a6b991fe';
 
 const baseURL = 'https://creativecommons.tankerkoenig.de/json';
 

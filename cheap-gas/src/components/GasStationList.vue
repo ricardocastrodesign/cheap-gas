@@ -21,7 +21,7 @@
           </v-col>
 
           <v-col cols="3">
-            <p class="font-weight-black text-right">{{ station.price }} €</p>
+            <p class="font-weight-black text-right">{{ station.price }}€</p>
           </v-col>
           <v-col cols="auto">
             <v-btn @click="getDirections(station)" icon="mdi-directions" density="compact" variant="text">
@@ -40,8 +40,8 @@ export default {
     getDirections(station) {
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition((position) => {
-          // const source = `${position.coords.latitude},${position.coords.longitude}`;
-          const source = "52.521,13.438";
+          const source = `${position.coords.latitude},${position.coords.longitude}`;
+          
           const destination = `${station.lat},${station.lng}`;
 
           const url = `https://www.google.com/maps/dir/?api=1&origin=${source}&destination=${destination}`;

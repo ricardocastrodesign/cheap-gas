@@ -25,15 +25,27 @@ export default {
         lat: 52.521,
         lng: 13.438,
         rad: 30,
-        brand: "Aral",
+        brand: "STAR",
         type: "diesel",
         sort: "price",
       },
     };
   },
   mounted() {
-    this.getGasStationsBrands();
-    this.getGasStations(this.defaultSearchForm);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.defaultSearchForm.lat = position.coords.latitude; // Assign to the data property
+          this.defaultSearchForm.lng = position.coords.longitude;
+          this.getGasStationsBrands(); // Fetch gas station brands
+          this.getGasStations(this.defaultSearchForm); // Fetch gas stations
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        }
+      );
+    }
+    
   },
   methods: {
     async getGasStations(searchForm) {
