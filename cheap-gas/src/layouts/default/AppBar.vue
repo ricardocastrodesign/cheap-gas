@@ -1,13 +1,13 @@
 <template>
-  <v-app-bar flat>
+  <v-app-bar color="background" flat scroll-behavior="hide">
     <v-app-bar-title>
-      <v-icon icon="mdi-circle-slice-6" />
+      <v-icon icon="mdi-gas-station" />
 
-      Essentials Preset
+      Cheap Gas
     </v-app-bar-title>
   </v-app-bar>
 </template>
 
 <script setup>
-  //
+//
 </script>
